@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c4d1065-c395-49b6-8081-1600994a5325" name="Changes" comment="Setup; LinkList still to be implemented">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/assignment2/beveragesanddrinkssystem/drinksView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/assignment2/beveragesanddrinkssystem/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/assignment2/beveragesanddrinkssystem/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/assignment2/beveragesanddrinkssystem/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/assignment2/beveragesanddrinkssystem/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Ingredient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
