@@ -1,77 +1,43 @@
 package Model;
 
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Drink {
-    private String drinkname = "";
-    private String drinkcountry = "";
-    private  String drinkdescription="";
+    private String name;
+    private String description;
+    private List<Ingredient> ingredients;
+    private double abv; // Alcohol by volume (0 if non-alcoholic)
 
-    private String imageURL ="";
-
-
-    //Drink name, place/country of origin, textual description, and an image/picture of the
-    //completed drink (as a URL) are among key data to store
-
-
-    public Drink(String drinkname, String drinkcountry, String drinkdescription, String imageURL) {
-        this.drinkname = drinkname;
-        this.drinkcountry = drinkcountry;
-        this.drinkdescription = drinkdescription;
-        this.imageURL = imageURL;
+    public Drink(String name, String description, double abv) {
+        this.name = name;
+        this.description = description;
+        this.abv = abv;
+        this.ingredients = new ArrayList<>();
     }
 
-    public String getDrinkname() {
-        return drinkname;
+    public String getName() {
+        return name;
     }
 
-    public void setDrinkname(String drinkname) {
-        this.drinkname = drinkname;
+    public String getDescription() {
+        return description;
     }
 
-    public String getDrinkcountry() {
-        return drinkcountry;
+    public List<Ingredient> getIngredients() {
+        return ingredients;
     }
 
-    public void setDrinkcountry(String drinkcountry) {
-        this.drinkcountry = drinkcountry;
+    public double getAbv() {
+        return abv;
     }
 
-    public String getDrinkdescription() {
-        return drinkdescription;
-    }
-
-    public void setDrinkdescription(String drinkdescription) {
-        this.drinkdescription = drinkdescription;
-    }
-
-    public String getImageURL() {
-        return imageURL;
-    }
-
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Drink drink)) return false;
-        return Objects.equals(getDrinkname(), drink.getDrinkname()) && Objects.equals(getDrinkcountry(), drink.getDrinkcountry()) && Objects.equals(getDrinkdescription(), drink.getDrinkdescription()) && Objects.equals(getImageURL(), drink.getImageURL());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getDrinkname(), getDrinkcountry(), getDrinkdescription(), getImageURL());
+    public void addIngredient(Ingredient ingredient) {
+        this.ingredients.add(ingredient);
     }
 
     @Override
     public String toString() {
-        return "Drink{" +
-                "drinkname='" + drinkname + '\'' +
-                ", drinkcountry='" + drinkcountry + '\'' +
-                ", drinkdescription='" + drinkdescription + '\'' +
-                ", imageURL='" + imageURL + '\'' +
-                '}';
+        return name + " (" + abv + "% ABV): " + description;
     }
 }
