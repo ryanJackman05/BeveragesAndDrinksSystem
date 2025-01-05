@@ -9,8 +9,13 @@ public class HelloController
     private Label welcomeText;
 
     @FXML
-    protected void onHelloButtonClick()
+    protected void openDrinksView()
     {
-        welcomeText.setText("Welcome to JavaFX Application!");
+        HelloApplication.mainStage.setScene(HelloApplication.drinksView);
+    }
+    @FXML
+    protected void openIngsView()
+    {
+        HelloApplication.mainStage.setScene(HelloApplication.ingsView);
     }
 }

@@ -1,5 +1,7 @@
 package Model;
 
-public class Recipe {
+import controller.LinkList;
 
+public class Recipe {
+    LinkList<Measure> measures;
 }

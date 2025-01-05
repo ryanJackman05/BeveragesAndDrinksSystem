@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="210.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <RadioButton mnemonicParsing="false" prefHeight="40.0" prefWidth="143.0" text="ingredient name" />
+      <TextField layoutX="151.0" prefHeight="40.0" prefWidth="59.0" promptText="Volume" text="0" />
+   </children>
+</Pane>

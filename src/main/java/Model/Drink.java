@@ -9,6 +9,8 @@ public class Drink {
 
     private String imageURL ="";
 
+    private Recipe recipe;
+
 
     //Drink name, place/country of origin, textual description, and an image/picture of the
     //completed drink (as a URL) are among key data to store

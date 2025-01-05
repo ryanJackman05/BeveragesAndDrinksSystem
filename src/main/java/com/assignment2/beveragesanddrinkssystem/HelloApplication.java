@@ -9,13 +9,19 @@ import java.io.IOException;
 
 public class HelloApplication extends Application
 {
+    public static Stage mainStage;
+    public static Scene home, drinksView, ingsView;
     @Override
-    public void start(Stage stage) throws IOException
-    {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
+    public void start(Stage stage) throws IOException {
+        mainStage = stage;
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home.fxml")); // to be duplicated for each scene
+        home = new Scene(fxmlLoader.load(), 600, 400);
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("drinksView.fxml"));
+        drinksView = new Scene(fxmlLoader.load(), 600, 400);
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ingsView.fxml"));
+        ingsView = new Scene(fxmlLoader.load(), 600, 400);
+        stage.setTitle("Theatre Booking System");
+        stage.setScene(home);
         stage.show();
     }
 
