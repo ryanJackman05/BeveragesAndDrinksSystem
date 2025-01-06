@@ -1,18 +1,17 @@
 package com.assignment2.beveragesanddrinkssystem;
 
 import Model.Drink;
+import controller.LinkList;
 import controller.SystemData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class DrinkCreator {
+    public static DrinkCreator DCController;
+    private LinkList<Drink> drinkList;
     @FXML
     TextField drinkName;
     @FXML
@@ -26,7 +25,7 @@ public class DrinkCreator {
     @FXML
     ListView<String> drinkListView;
     @FXML
-    Label infoText;
+    Label infoText, modeText;
     @FXML
     Button submit, edit, delete, home;
 
@@ -50,7 +49,7 @@ public class DrinkCreator {
     }
     @FXML
     protected boolean addNewDrink() {
-        if(drinkName.getValue()==null || drinkDescription.getValue()==null || drinkCountry.getValue()==null || imageURL.getValue()==null || !Utilities.isDouble(balconyPrice.getText())) return false;
+        if(drinkName.getText()==null || drinkDescription.getText()==null || drinkCountry.getText()==null) return false;
         // return false if values are empty or if IsDouble/IsType checks fail
         SystemData.drinks.addElement(getFields()); // add item, remember that getFIelds should return relevant type
         showDrinks(); // update list view
@@ -73,10 +72,10 @@ public class DrinkCreator {
     }
     @FXML
     protected void editDrink() { // enable edit mode, called by edit button
-        if(selectedDrnk != null){
+        if(selectedDrink != null){
             System.out.println("now editing "+selectedIndex);
             submit.setText("Submit");
-            drinkText.setText("Edit Drink Info");
+            modeText.setText("Edit Drink Info");
             editing = true;
             editingIndex = selectedIndex;
             setFields(selectedDrink);
@@ -86,7 +85,7 @@ public class DrinkCreator {
     @FXML
     protected void showDrinks() { // updates list
         drinkListView.getItems().clear();
-        LinkedList<Drink>.Node<Drink> n = drinkList.head;
+        LinkList<Drink>.Node<Drink> n = drinkList.head;
         while (n!=null){
             drinkListView.getItems().add(n.getContents().getDrinkName() + "     " + n.getContents().getDrinkDescription()+"    " + n.getContents().getDrinkCountry()+"    " + n.getContents().getImageURL()+"    ");
             n = n.next;
@@ -96,15 +95,13 @@ public class DrinkCreator {
     protected void updateView() { // general view update, called on every click.
         selectedIndex = drinkListView.getSelectionModel().getSelectedIndex();
         System.out.println("selected index: "+selectedIndex);
-        LinkedList<Drink>.Node<Drink> node = drinkList.getNode(selectedIndex);
+        LinkList<Drink>.Node<Drink> node = drinkList.getNode(selectedIndex);
         if(node!=null) { // disable buttons if no selected item
             selectedDrink = node.getContents();
-            viewPerfs.setDisable(false);
             edit.setDisable(false);
             delete.setDisable(false);
         }
         else {
-            viewPerfs.setDisable(true);
             edit.setDisable(true);
             delete.setDisable(true);
         }
@@ -127,12 +124,13 @@ public class DrinkCreator {
     }
     public void initialize() // called on every opening of this scene, as a new controller is created every time a scene is set
     {
-        HelloController = this; // when new controller instance is created, it becomes Controller
+        DCController = this; // when new controller instance is created, it becomes Controller
+
     }
     protected void setFields(Drink drinkInfo) // fills all the fields with data FROM the currently selected item in the list view
     {
         drinkName.setText(drinkInfo.getDrinkName());
-        drinkCountry.setValue(drinkInfo.getDrinkCountry());
+        drinkCountry.setText(drinkInfo.getDrinkCountry());
         imageURL.setText(drinkInfo.getImageURL());
         drinkDescription.setText(drinkInfo.getDrinkDescription());
     }
@@ -145,6 +143,11 @@ public class DrinkCreator {
     public void openHomeView(ActionEvent actionEvent) throws IOException
     {
         HelloApplication.mainStage.setScene(HelloApplication.home);
+        HelloApplication.mainStage.setTitle("Home");
+    }
+    public void openDrinkViewer(ActionEvent actionEvent) throws IOException
+    {
+        HelloApplication.mainStage.setScene(HelloApplication.drinksViewer);
         HelloApplication.mainStage.setTitle("Home");
     }
 }

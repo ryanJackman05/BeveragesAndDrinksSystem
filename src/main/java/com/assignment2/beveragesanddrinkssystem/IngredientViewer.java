@@ -125,6 +125,7 @@ public class IngredientViewer {
     public void initialize() // called on every opening of this scene, as a new controller is created every time a scene is set
     {
         IVController = this; // when new controller instance is created, it becomes Controller
+        ingredientList = SystemData.ingredients;
     }
     protected void setFields(Ingredient ingredientInfo) // fills all the fields with data FROM the currently selected item in the list view
     {

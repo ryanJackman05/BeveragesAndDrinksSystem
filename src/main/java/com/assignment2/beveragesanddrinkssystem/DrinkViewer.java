@@ -1,6 +1,5 @@
 package com.assignment2.beveragesanddrinkssystem;
 import Model.Drink;
-import controller.SystemData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -31,20 +30,7 @@ public class DrinkViewer {
 
     @FXML
     protected void updateView() { // general view update, called on every click.
-        selectedIndex = drinkListView.getSelectionModel().getSelectedIndex();
-        System.out.println("selected index: "+selectedIndex);
-        LinkedList<Drink>.Node<Drink> node = drinkList.getNode(selectedIndex);
-        if(node!=null) { // disable buttons if no selected item
-            selectedDrink = node.getContents();
-            viewPerfs.setDisable(false);
-            edit.setDisable(false);
-            delete.setDisable(false);
-        }
-        else {
-            viewPerfs.setDisable(true);
-            edit.setDisable(true);
-            delete.setDisable(true);
-        }
+
     }
     @FXML
     protected void resetView() // resets ALL fields, and returns to adding mode
@@ -57,6 +43,18 @@ public class DrinkViewer {
     public void initialize() // called on every opening of this scene, as a new controller is created every time a scene is set
     {
         // when new controller instance is created, it becomes Controller
+    }
+    public void loadData()
+    {
+        if(HelloApplication.drinksViewer.getUserData().getClass().equals(Drink.class)) {
+            selectedDrink = (Drink) HelloApplication.drinksViewer.getUserData();
+            drinkName.setText("Show: "+selectedDrink.getDrinkName());
+            drinkDescription.setText(selectedDrink.getDrinkDescription());
+            drinkCountry.setText(selectedDrink.getDrinkCountry());
+        }
+        else {
+            System.out.println("Drink could not be found in userdata");
+        }
     }
     public void openHomeView(ActionEvent actionEvent) throws IOException
     {

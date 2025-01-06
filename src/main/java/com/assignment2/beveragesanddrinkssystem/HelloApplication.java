@@ -10,16 +10,23 @@ import java.io.IOException;
 public class HelloApplication extends Application
 { // public static scenes for reference from all classes, do not change
     public static Stage mainStage;
-    public static Scene home, drinksView, ingsView;
+    public static Scene home, drinksViewer, drinksCreator, drinksSearch, ingsViewer, ingsSearch;
     @Override
     public void start(Stage stage) throws IOException {
         mainStage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home.fxml")); // to be duplicated for each scene
         home = new Scene(fxmlLoader.load(), 600, 400);
         fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("drinksView.fxml"));
-        drinksView = new Scene(fxmlLoader.load(), 600, 400);
+        drinksViewer = new Scene(fxmlLoader.load(), 600, 400);
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("drinkCreator.fxml"));
+        drinksCreator = new Scene(fxmlLoader.load(), 600, 400);
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("drinkSearch.fxml"));
+        drinksSearch = new Scene(fxmlLoader.load(), 600, 400);
         fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ingsView.fxml"));
-        ingsView = new Scene(fxmlLoader.load(), 600, 400);
+        ingsViewer = new Scene(fxmlLoader.load(), 600, 400);
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ingsSearch.fxml"));
+        ingsSearch = new Scene(fxmlLoader.load(), 600, 400);
+
         stage.setTitle("Theatre Booking System");
         stage.setScene(home);
         stage.show();

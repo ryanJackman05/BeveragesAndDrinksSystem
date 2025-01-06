@@ -23,27 +23,27 @@ public class Drink {
         this.imageURL = imageURL;
     }
 
-    public String getDrinkname() {
+    public String getDrinkName() {
         return drinkname;
     }
 
-    public void setDrinkname(String drinkname) {
+    public void setDrinkName(String drinkname) {
         this.drinkname = drinkname;
     }
 
-    public String getDrinkcountry() {
+    public String getDrinkCountry() {
         return drinkcountry;
     }
 
-    public void setDrinkcountry(String drinkcountry) {
+    public void setDrinkCountry(String drinkcountry) {
         this.drinkcountry = drinkcountry;
     }
 
-    public String getDrinkdescription() {
+    public String getDrinkDescription() {
         return drinkdescription;
     }
 
-    public void setDrinkdescription(String drinkdescription) {
+    public void setDrinkDescription(String drinkdescription) {
         this.drinkdescription = drinkdescription;
     }
 
@@ -59,12 +59,12 @@ public class Drink {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Drink drink)) return false;
-        return Objects.equals(getDrinkname(), drink.getDrinkname()) && Objects.equals(getDrinkcountry(), drink.getDrinkcountry()) && Objects.equals(getDrinkdescription(), drink.getDrinkdescription()) && Objects.equals(getImageURL(), drink.getImageURL());
+        return Objects.equals(getDrinkName(), drink.getDrinkName()) && Objects.equals(getDrinkCountry(), drink.getDrinkCountry()) && Objects.equals(getDrinkDescription(), drink.getDrinkDescription()) && Objects.equals(getImageURL(), drink.getImageURL());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getDrinkname(), getDrinkcountry(), getDrinkdescription(), getImageURL());
+        return Objects.hash(getDrinkName(), getDrinkCountry(), getDrinkDescription(), getImageURL());
     }
 
     @Override

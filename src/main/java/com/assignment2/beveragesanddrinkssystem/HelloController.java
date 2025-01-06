@@ -9,13 +9,24 @@ public class HelloController
     private Label welcomeText;
 
     @FXML
-    protected void openDrinksView()
+    protected void openDrinksSearch()
     {
-        HelloApplication.mainStage.setScene(HelloApplication.drinksView);
+        HelloApplication.mainStage.setScene(HelloApplication.drinksViewer);
     }
     @FXML
-    protected void openIngsView()
+    protected void openDrinksCreator()
     {
-        HelloApplication.mainStage.setScene(HelloApplication.ingsView);
+        HelloApplication.mainStage.setScene(HelloApplication.drinksViewer);
+    }
+    // creator and viewer are within the same view
+    @FXML
+    protected void openIngsSearch()
+    {
+        HelloApplication.mainStage.setScene(HelloApplication.ingsViewer);
+    }
+    @FXML
+    protected void openIngsCreator()
+    {
+        HelloApplication.mainStage.setScene(HelloApplication.ingsViewer);
     }
 }
