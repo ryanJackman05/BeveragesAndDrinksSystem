@@ -1,5 +1,4 @@
 package com.assignment2.beveragesanddrinkssystem;
-
 import Model.Ingredient;
 import controller.SystemData;
 import javafx.event.ActionEvent;
@@ -15,7 +14,7 @@ public class IngredientViewer {
     @FXML
     TextField name;
     @FXML
-    TextArea desc;
+    TextArea description;
     @FXML
     Slider abv;
     @FXML
@@ -33,43 +32,43 @@ public class IngredientViewer {
     protected void submit() // called every time submit button is hit (submit/create)
     {
         if(editing && editingIndex!=-1) { // checks if in editing mode, either updates selected item or adds new one
-            updateShow();
+            updateIngredient();
             System.out.println("submitting edit");
         }
         else {
-            addNewShow();
-            System.out.println("adding new Show");
+            addNewIngredient();
+            System.out.println("adding new Ingredient");
         }
     }
     @FXML
-    protected boolean addNewShow() {
-        if(startDate.getValue()==null || endDate.getValue()==null || !Utilities.isDouble(stallsPrice.getText()) || !Utilities.isDouble(circlePrice.getText()) || !Utilities.isDouble(balconyPrice.getText())) return false;
+    protected boolean addNewIngredient() {
+        if(name.getValue()==null || description.getValue()==null || !Utilities.isDouble(abv.getText())) return false;
         // return false if values are empty or if IsDouble/IsType checks fail
         SystemData.ingredients.addElement(getFields()); // add item, remember that getFIelds should return relevant type
-        showShows(); // update list view
+        showIngredients(); // update list view
         return true;
     }
     @FXML
-    protected void removeShow() { // quick and easy delete. uses SelectedIndex
+    protected void removeIngredient() { // quick and easy delete. uses SelectedIndex
         System.out.println("now deleting "+selectedIndex);
-        System.out.println("show was deleted?: "+showList.deleteNode(selectedIndex));
-        showShows();
+        System.out.println("show was deleted?: "+ingredientList.deleteNode(selectedIndex));
+        showIngredients();
         updateView();
     }
     @FXML
-    protected void updateShow() // called by submit if editing = true
+    protected void updateIngredient() // called by submit if editing = true
     {
-        if (!showList.updateNode(editingIndex, getFields())){
-            infoText.setText("Error: Show could not be updated");
+        if (!ingredientList.updateNode(editingIndex, getFields())){
+            infoText.setText("Error: Ingredient could not be updated");
         }
         resetView();
     }
     @FXML
-    protected void editShow() { // enable edit mode, called by edit button
+    protected void editIngredient() { // enable edit mode, called by edit button
         if(selectedIngredient != null){
             System.out.println("now editing "+selectedIndex);
             submit.setText("Submit");
-            modeText.setText("Edit Show Info");
+            ingredientText.setText("Edit Ingredient Info");
             editing = true;
             editingIndex = selectedIndex;
             setFields(selectedIngredient);
@@ -77,19 +76,19 @@ public class IngredientViewer {
     }
     // "Updating View" Methods
     @FXML
-    protected void showShows() { // updates list
-        showListView.getItems().clear();
-        LinkedList<Show>.Node<Show> n = showList.head;
+    protected void showIngredients() { // updates list
+        ingredientListView.getItems().clear();
+        LinkedList<Ingredient>.Node<Ingredient> n = ingredientList.head;
         while (n!=null){
-            showListView.getItems().add(n.getContents().getTitle() + "     " + n.getContents().getStartDate()+" - "+n.getContents().getEndDate());
+            ingredientListView.getItems().add(n.getContents().getName() + "     " + n.getContents().getDescription()+"    "+n.getContents().getAbv());
             n = n.next;
         }
     }
     @FXML
     protected void updateView() { // general view update, called on every click.
-        selectedIndex = showListView.getSelectionModel().getSelectedIndex();
+        selectedIndex = ingredientListView.getSelectionModel().getSelectedIndex();
         System.out.println("selected index: "+selectedIndex);
-        LinkedList<Show>.Node<Show> node = showList.getNode(selectedIndex);
+        LinkedList<Ingredient>.Node<Ingredient> node = ingredientList.getNode(selectedIndex);
         if(node!=null) { // disable buttons if no selected item
             selectedIngredient = node.getContents();
             viewPerfs.setDisable(false);
@@ -101,9 +100,7 @@ public class IngredientViewer {
             edit.setDisable(true);
             delete.setDisable(true);
         }
-        if(!Utilities.isDouble(stallsPrice.getText())) stallsPrice.setText("");
-        if(!Utilities.isDouble(circlePrice.getText())) circlePrice.setText("");
-        if(!Utilities.isDouble(balconyPrice.getText())) balconyPrice.setText("");
+        if(!Utilities.isDouble(abv.getText())) abv.setText("");
         // resets textfields if type does not match
     }
     @FXML
@@ -112,46 +109,40 @@ public class IngredientViewer {
         System.out.println("Resetting view");
         editing = false;
         editingIndex = -1;
-        submit.setText("Create Show");
-        modeText.setText("Make New Show");
+        submit.setText("Create Ingredient");
+        modeText.setText("Make New Ingredient");
         infoText.setText("Info about the current action will be displayed here");
-        showShows();
+        showIngredients();
 
-        title.setText("");
-        runtime.setValue(90);
-        startDate.setValue(null);
-        endDate.setValue(null);
-        stallsPrice.setText("");
-        circlePrice.setText("");
-        balconyPrice.setText("");
+        name.setText("");
+        abv.setValue(90);
+        description.setText("");
     }
     public void initialize() // called on every opening of this scene, as a new controller is created every time a scene is set
     {
-        SVController = this; // when new controller instance is created, it becomes Controller
+        HelloController = this; // when new controller instance is created, it becomes Controller
     }
-    protected void setFields(Show showInfo) // fills all the fields with data FROM the currently selected item in the list view
+    protected void setFields(Ingredient ingredientInfo) // fills all the fields with data FROM the currently selected item in the list view
     {
-        title.setText(showInfo.getTitle());
-        runtime.setValue(showInfo.getRuntime());
+        name.setText(ingredientInfo.getName());
+        abv.setValue(ingredientInfo.getAbv());
         startDate.setValue(LStartDate);
+        description.setText(ingredientInfo.getDescription());
         endDate.setValue(LEndDate);
-        stallsPrice.setText(""+showInfo.getStallsPrice());
-        circlePrice.setText(""+showInfo.getCirclePrice());
-        balconyPrice.setText(""+showInfo.getBalconyPrice());
     }
-    protected Show getFields() // gets the info from the input tab. for fetching input when adding new item
+    protected Ingredient getFields() // gets the info from the input tab. for fetching input when adding new item
     {
         //parse int for prices
         double stalls = Double.parseDouble(stallsPrice.getText());
         double circle = Double.parseDouble(circlePrice.getText());
         double balcony = Double.parseDouble(balconyPrice.getText());
         // double parsing to get value from textfield as number. Double check done in add function (at top)
-        return new Show(title.getText(), (int)runtime.getValue(), Utilities.dateToString(startDate.getValue()), Utilities.dateToString(endDate.getValue()), stalls, circle, balcony);
+        return new Ingredient(name.getText(), description.getText() (int)runtime.getValue(), Utilities.dateToString(startDate.getValue()), Utilities.dateToString(endDate.getValue()), stalls, circle, balcony);
     }
     public void openHomeView(ActionEvent actionEvent) throws IOException
     {
-        ApplicationStart.mainStage.setScene(ApplicationStart.home);
-        ApplicationStart.mainStage.setTitle("Home");
+        HelloApplication.mainStage.setScene(HelloApplication.home);
+        HelloApplication.mainStage.setTitle("Home");
     }
     public void updateSlider() // updates the slider label on movement
     {
