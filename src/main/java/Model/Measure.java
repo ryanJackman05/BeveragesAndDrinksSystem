@@ -41,9 +41,6 @@ public class Measure {
 
     @Override
     public String toString() {
-        return "Measure{" +
-                "ingredient=" + ingredient +
-                ", volume=" + volume +
-                '}';
+        return volume + "ml of " + ingredient;
     }
 }

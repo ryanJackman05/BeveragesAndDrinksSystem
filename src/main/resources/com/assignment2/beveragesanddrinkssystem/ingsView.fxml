@@ -17,11 +17,16 @@
                 <Label text="Ingredient Name" />
                 <TextField fx:id="name" promptText="Enter New Ingredient's Name" />
             <Label layoutX="20.0" layoutY="51.0" text="Ingredient Description" />
-            <TextArea fx:id="desc" prefHeight="100.0" prefWidth="179.0" />
+            <TextArea fx:id="description" prefHeight="100.0" prefWidth="179.0" />
                 <Label layoutX="10.0" text="Alcohol By Volume" />
-                <Slider fx:id="abv" onMouseReleased="#updateSlider" prefHeight="14.0" prefWidth="101.0" value="20.0" />
-                <Label fx:id="sliderText" alignment="CENTER" layoutX="20.0" layoutY="94.0" prefHeight="18.0" prefWidth="218.0" text="90" />
-                <Button fx:id="createButton" mnemonicParsing="false" onAction="#submit" text="Create Ingredient" />
+                <Slider fx:id="abv" minorTickCount="24" onMouseReleased="#updateSlider" prefHeight="14.0" prefWidth="101.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+                <Label fx:id="abvText" alignment="CENTER" layoutX="20.0" layoutY="94.0" prefHeight="18.0" prefWidth="218.0" text="0" />
+                <Button fx:id="submit" mnemonicParsing="false" onAction="#submit" text="Create Ingredient" />
+            <Label fx:id="infoText" alignment="TOP_LEFT" layoutX="20.0" layoutY="20.0" prefHeight="98.0" prefWidth="179.0" text="Info about the current action will appear here">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
             </children>
             <padding>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -29,7 +34,7 @@
         </VBox>
         <VBox layoutX="200.0" prefHeight="400.0" prefWidth="400.0" AnchorPane.leftAnchor="200.0">
             <children>
-                <ListView fx:id="ingListView" onMouseClicked="#updateView" prefHeight="300.0" prefWidth="400.0">
+                <ListView fx:id="ingredientListView" onMouseClicked="#updateView" prefHeight="300.0" prefWidth="400.0">
                     <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                     </VBox.margin></ListView>
@@ -38,12 +43,12 @@
                         <Insets left="10.0" right="10.0" />
                     </VBox.margin>
                     <children>
-                        <Button fx:id="editButton" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#editIngredient" prefHeight="30.0" prefWidth="100.0" text="Edit">
+                        <Button fx:id="edit" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#editIngredient" prefHeight="30.0" prefWidth="100.0" text="Edit">
                             <HBox.margin>
                                 <Insets right="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button fx:id="deleteButton" disable="true" layoutX="130.0" layoutY="10.0" mnemonicParsing="false" onAction="#removeIngredient" prefHeight="30.0" prefWidth="100.0" text="Delete">
+                        <Button fx:id="delete" disable="true" layoutX="130.0" layoutY="10.0" mnemonicParsing="false" onAction="#removeIngredient" prefHeight="30.0" prefWidth="100.0" text="Delete">
                             <HBox.margin>
                                 <Insets right="10.0" />
                             </HBox.margin>

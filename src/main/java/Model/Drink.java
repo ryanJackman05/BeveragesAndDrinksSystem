@@ -21,6 +21,10 @@ public class Drink {
         this.drinkcountry = drinkcountry;
         this.drinkdescription = drinkdescription;
     }
+    public void addRecipe(Recipe recipe)
+    {
+        this.recipe = recipe;
+    }
 
     public String getDrinkName() {
         return drinkname;
@@ -52,6 +56,28 @@ public class Drink {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+    public String getIngredients()
+    {
+        String output = "Ingredients:           (ABV = "+getABV()+")";
+        if (recipe.measures.getLength() == 0)
+            return output + "none";
+        for (int i = 0; i < recipe.measures.getLength(); i++) {
+            output += '\n' + recipe.measures.getNode(i).getContents().toString();
+        }
+        return output;
+    }
+    public double getABV()
+    {
+        double totalVolume = 0, totalAlcVolume = 0;
+        for (int i = 0; i < recipe.measures.getLength(); i++) {
+            double volume = recipe.measures.getNode(i).getContents().getVolume();
+            double ABV = recipe.measures.getNode(i).getContents().getIngredient().getAbv() / 100; // val between 0 and 1
+
+            totalVolume += volume;
+            totalAlcVolume += volume * ABV;
+        }
+        return totalVolume / totalAlcVolume;
     }
 
     @Override

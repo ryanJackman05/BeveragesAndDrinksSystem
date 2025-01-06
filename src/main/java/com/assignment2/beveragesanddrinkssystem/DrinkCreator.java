@@ -1,17 +1,22 @@
 package com.assignment2.beveragesanddrinkssystem;
 
 import Model.Drink;
+import Model.Ingredient;
+import Model.Measure;
 import controller.LinkList;
 import controller.SystemData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
 public class DrinkCreator {
     public static DrinkCreator DCController;
     private LinkList<Drink> drinkList;
+    private LinkList<Ingredient> ingredientList;
     @FXML
     TextField drinkName;
     @FXML
@@ -19,15 +24,13 @@ public class DrinkCreator {
     @FXML
     TextField drinkCountry;
     @FXML
-    TextField imageURL;
-    @FXML
     ListView<FXML> ingredientListView;
     @FXML
     ListView<String> drinkListView;
     @FXML
     Label infoText, modeText;
     @FXML
-    Button submit, edit, delete, home;
+    Button submit, edit, delete, openButton, home;
 
 
     // control variables. do not touch pls <333333333
@@ -100,10 +103,12 @@ public class DrinkCreator {
             selectedDrink = node.getContents();
             edit.setDisable(false);
             delete.setDisable(false);
+            openButton.setDisable(false);
         }
         else {
             edit.setDisable(true);
             delete.setDisable(true);
+            openButton.setDisable(true);
         }
     }
     @FXML
@@ -119,25 +124,37 @@ public class DrinkCreator {
 
         drinkName.setText("");
         drinkCountry.setText("");
-        imageURL.setText("");
         drinkDescription.setText("");
     }
     public void initialize() // called on every opening of this scene, as a new controller is created every time a scene is set
     {
         DCController = this; // when new controller instance is created, it becomes Controller
         drinkList = SystemData.drinks;
+        ingredientList = SystemData.ingredients;
+        ingredientListView.getItems().clear();
+        LinkList<Ingredient>.Node<Ingredient> n = ingredientList.head;
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("drinksView.fxml"));
+        while (n!=null){
+            ingredientListView.getItems().add(new Pane(fxmlLoader.load()));
+            n = n.next;
+        }
     }
     protected void setFields(Drink drinkInfo) // fills all the fields with data FROM the currently selected item in the list view
     {
         drinkName.setText(drinkInfo.getDrinkName());
         drinkCountry.setText(drinkInfo.getDrinkCountry());
-        imageURL.setText(drinkInfo.getImageURL());
         drinkDescription.setText(drinkInfo.getDrinkDescription());
     }
     protected Drink getFields() // gets the info from the input tab. for fetching input when adding new item
     {
         //parse int for prices
         // double parsing to get value from textfield as number. Double check done in add function (at top)
+
+        LinkList<Measure> measures = new LinkList<Measure>();
+        for (int i = 0; i < ingredientListView.getItems().size(); i++) {
+            System.out.println(ingredientListView.getChildrenUnmodifiable().get(i).getClass());
+        }
+
         return new Drink(drinkName.getText(), drinkDescription.getText(), drinkCountry.getText());
     }
     public void openHomeView(ActionEvent actionEvent) throws IOException

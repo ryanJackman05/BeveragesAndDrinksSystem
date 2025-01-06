@@ -10,17 +10,9 @@ public class DrinkViewer {
     public static DrinkViewer DVController;
     // TODO: CHANGE FIELD NAMES AND TYPES. REFER TO THE COMPLETED FXML VIEWS TO SEE WHAT ELEMENTS NEED REFERENCING
     @FXML
-    TextField drinkName;
+    Label drinkName, drinkDescription, drinkCountry, recipe;
     @FXML
-    TextArea drinkDescription;
-    @FXML
-    TextField drinkCountry;
-    @FXML
-    TextField imageURL;
-    @FXML
-    Label infoText;
-    @FXML
-    Button submit, edit, delete, home;
+    Button home;
 
 
     // control variables. do not touch pls <333333333
@@ -38,7 +30,6 @@ public class DrinkViewer {
     {
         drinkName.setText("");
         drinkCountry.setText("");
-        imageURL.setText("");
         drinkDescription.setText("");
     }
     public void initialize() // called on every opening of this scene, as a new controller is created every time a scene is set
@@ -52,6 +43,7 @@ public class DrinkViewer {
             drinkName.setText("Drink Name: "+selectedDrink.getDrinkName());
             drinkDescription.setText(selectedDrink.getDrinkDescription());
             drinkCountry.setText(selectedDrink.getDrinkCountry());
+            recipe.setText(selectedDrink.getIngredients());
         }
         else {
             System.out.println("Drink could not be found in userdata");
