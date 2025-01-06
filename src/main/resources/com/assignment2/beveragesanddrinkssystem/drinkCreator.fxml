@@ -21,7 +21,7 @@
                 <Label layoutX="20.0" layoutY="51.0" text="Drink Description" />
                 <TextArea fx:id="desc" prefHeight="68.0" prefWidth="210.0" />
             <ListView fx:id="ingList" prefHeight="200.0" prefWidth="200.0" />
-                <Button fx:id="createButton" mnemonicParsing="false" onAction="#submit" text="Create Ingredient" />
+                <Button fx:id="createButton" mnemonicParsing="false" onAction="#submit" text="Create Drink" />
             </children>
             <padding>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -30,7 +30,7 @@
         <VBox layoutX="250.0" prefHeight="400.0" prefWidth="350.0" AnchorPane.leftAnchor="250.0">
             <children>
                 <Label text="Search" />
-                <TextField fx:id="searchName" prefHeight="26.0" prefWidth="301.0" promptText="Search by ingredient name" />
+                <TextField fx:id="searchName" prefHeight="26.0" prefWidth="301.0" promptText="Search by drink name" />
                 <ListView fx:id="ingListView" onMouseClicked="#updateView" prefHeight="300.0" prefWidth="400.0">
                     <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
