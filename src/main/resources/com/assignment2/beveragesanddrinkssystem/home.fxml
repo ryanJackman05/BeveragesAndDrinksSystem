@@ -3,6 +3,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment2.beveragesanddrinkssystem.HelloController">
@@ -14,13 +15,29 @@
       <font>
          <Font name="Britannic Bold" size="32.0" />
       </font></Label>
-    <Button onAction="#openDrinksSearch" prefHeight="40.0" prefWidth="100.0" text="Drinks">
-      <font>
-         <Font size="20.0" />
-      </font></Button>
-   <Button layoutX="260.0" layoutY="98.0" onAction="#openIngsView" prefHeight="43.0" prefWidth="156.0" text="Ingredients">
-      <font>
-         <Font size="20.0" />
-      </font>
-   </Button>
+   <Pane prefHeight="312.0" prefWidth="560.0">
+      <children>
+          <Button layoutX="14.0" layoutY="43.0" onAction="#openDrinksSearch" prefHeight="90.0" prefWidth="221.0" text="Drinks Search">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Button layoutX="325.0" layoutY="43.0" onAction="#openIngsSearch" prefHeight="90.0" prefWidth="221.0" text="Ingredients Search">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Button layoutX="14.0" layoutY="178.0" onAction="#openDrinksSearch" prefHeight="90.0" prefWidth="221.0" text="Drinks Creator">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Button layoutX="325.0" layoutY="178.0" onAction="#openIngsCreator" prefHeight="90.0" prefWidth="221.0" text="Ingredients Creator">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Line endX="280.0" endY="302.3999938964844" startX="280.0" startY="1.5258789289873675E-6" />
+      </children>
+   </Pane>
 </VBox>

@@ -16,13 +16,13 @@ public class HelloController
     @FXML
     protected void openDrinksCreator()
     {
-        HelloApplication.mainStage.setScene(HelloApplication.drinksViewer);
+        HelloApplication.mainStage.setScene(HelloApplication.drinksCreator);
     }
     // creator and viewer are within the same view
     @FXML
     protected void openIngsSearch()
     {
-        HelloApplication.mainStage.setScene(HelloApplication.ingsViewer);
+        HelloApplication.mainStage.setScene(HelloApplication.ingsSearch);
     }
     @FXML
     protected void openIngsCreator()

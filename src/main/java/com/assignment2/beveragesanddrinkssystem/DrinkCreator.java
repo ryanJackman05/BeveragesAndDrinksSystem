@@ -147,7 +147,10 @@ public class DrinkCreator {
     }
     public void openDrinkViewer(ActionEvent actionEvent) throws IOException
     {
+        HelloApplication.drinksViewer.setUserData(selectedDrink);
         HelloApplication.mainStage.setScene(HelloApplication.drinksViewer);
-        HelloApplication.mainStage.setTitle("Home");
+        HelloApplication.mainStage.setTitle("Drink View");
+
+        DrinkViewer.DVController.loadData();
     }
 }

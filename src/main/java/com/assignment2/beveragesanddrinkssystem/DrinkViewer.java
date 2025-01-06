@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import java.io.IOException;
 
 public class DrinkViewer {
+    public static DrinkViewer DVController;
     // TODO: CHANGE FIELD NAMES AND TYPES. REFER TO THE COMPLETED FXML VIEWS TO SEE WHAT ELEMENTS NEED REFERENCING
     @FXML
     TextField drinkName;
@@ -42,13 +43,13 @@ public class DrinkViewer {
     }
     public void initialize() // called on every opening of this scene, as a new controller is created every time a scene is set
     {
-        // when new controller instance is created, it becomes Controller
+        DVController = this;// when new controller instance is created, it becomes Controller
     }
     public void loadData()
     {
         if(HelloApplication.drinksViewer.getUserData().getClass().equals(Drink.class)) {
             selectedDrink = (Drink) HelloApplication.drinksViewer.getUserData();
-            drinkName.setText("Show: "+selectedDrink.getDrinkName());
+            drinkName.setText("Drink Name: "+selectedDrink.getDrinkName());
             drinkDescription.setText(selectedDrink.getDrinkDescription());
             drinkCountry.setText(selectedDrink.getDrinkCountry());
         }
