@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HelloApplication extends Application
-{
+{ // public static scenes for reference from all classes, do not change
     public static Stage mainStage;
     public static Scene home, drinksView, ingsView;
     @Override
