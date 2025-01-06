@@ -1,0 +1,29 @@
+<object-stream>
+  <controller.LinkList>
+    <head>
+      <next>
+        <next>
+          <contents class="Model.Drink">
+            <drinkname>cfvgbhjnmk,l</drinkname>
+            <drinkcountry>fgh jnmkl</drinkcountry>
+            <drinkdescription>cfvgbhjnmk,l</drinkdescription>
+            <imageURL></imageURL>
+          </contents>
+        </next>
+        <contents class="Model.Drink">
+          <drinkname>cfvgbhjnmk,l</drinkname>
+          <drinkcountry>fgh jnmkl</drinkcountry>
+          <drinkdescription>cfvgbhjnmk,l</drinkdescription>
+          <imageURL></imageURL>
+        </contents>
+      </next>
+      <contents class="Model.Drink">
+        <drinkname>cfvgbhjnmk,l</drinkname>
+        <drinkcountry>fgh jnmkl</drinkcountry>
+        <drinkdescription>cfvgbhjnmk,l</drinkdescription>
+        <imageURL></imageURL>
+      </contents>
+    </head>
+  </controller.LinkList>
+  <controller.LinkList/>
+</object-stream>
