@@ -5,24 +5,13 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment2.beveragesanddrinkssystem.DrinkViewer">
-   <children>
-      <HBox prefHeight="400.0" prefWidth="600.0">
-         <children>
-            <Pane prefHeight="400.0" prefWidth="300.0">
-               <children>
-                  <Label prefHeight="37.0" prefWidth="300.0" text="Search" />
-                  <TextField layoutY="37.0" prefHeight="25.0" prefWidth="149.0" promptText="Drink Name" />
-                  <ListView layoutX="19.0" layoutY="81.0" prefHeight="300.0" prefWidth="260.0" />
-               </children>
-            </Pane>
-            <Pane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="299.0">
-               <children>
-                  <Label layoutX="19.0" prefHeight="37.0" prefWidth="149.0" text="Drink Name" />
-                  <ImageView fitHeight="84.0" fitWidth="172.0" layoutX="127.0" pickOnBounds="true" preserveRatio="true" />
-                  <TextArea layoutX="19.0" layoutY="86.0" prefHeight="300.0" prefWidth="260.0" promptText="Drink Description" />
-                  <Label layoutX="19.0" layoutY="37.0" prefHeight="37.0" prefWidth="149.0" text="Drink ABV" />
-               </children></Pane>
-         </children>
-      </HBox>
-   </children>
+
+    <Pane prefHeight="400.0" prefWidth="600.0">
+        <children>
+            <Label layoutX="19.0" layoutY="18.0" prefHeight="37.0" prefWidth="149.0" text="Drink Name" />
+            <ImageView fitHeight="127.0" fitWidth="331.0" layoutX="244.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="19.0" layoutY="55.0" prefHeight="37.0" prefWidth="149.0" text="Drink ABV" />
+         <Label alignment="TOP_LEFT" layoutX="19.0" layoutY="156.0" prefHeight="188.0" prefWidth="562.0" text="Drink ABV" />
+         <Button fx:id="home" layoutX="497.0" layoutY="361.0" mnemonicParsing="false" text="Home" />
+        </children></Pane>
 </AnchorPane>

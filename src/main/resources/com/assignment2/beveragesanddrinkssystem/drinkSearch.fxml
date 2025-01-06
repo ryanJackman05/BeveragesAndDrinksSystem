@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.assignment2.beveragesanddrinkssystem.DrinkSearch"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment2.beveragesanddrinkssystem.DrinkSearch">
+    <children>
+        <HBox prefHeight="400.0" prefWidth="600.0">
+            <children>
+                <Pane prefHeight="400.0" prefWidth="567.0">
+                    <children>
+                        <Label layoutX="18.0" prefHeight="37.0" prefWidth="278.0" text="Search" />
+                        <TextField layoutX="19.0" layoutY="37.0" prefHeight="25.0" prefWidth="149.0" promptText="Drink Name" />
+                        <ListView layoutX="19.0" layoutY="81.0" prefHeight="300.0" prefWidth="437.0" />
+                  <TextField layoutX="192.0" layoutY="37.0" prefHeight="25.0" prefWidth="94.0" promptText="Min Alcohol" />
+                  <TextField layoutX="296.0" layoutY="37.0" prefHeight="25.0" prefWidth="94.0" promptText="Max Alcohol" />
+                  <Button disable="true" layoutX="483.0" layoutY="200.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="55.0" text="Open" />
+                    </children>
+                </Pane>
 
+            </children>
+        </HBox>
+    </children>
 </AnchorPane>

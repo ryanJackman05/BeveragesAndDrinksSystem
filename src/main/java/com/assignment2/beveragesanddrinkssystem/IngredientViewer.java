@@ -1,9 +1,11 @@
 package com.assignment2.beveragesanddrinkssystem;
 import Model.Ingredient;
+import controller.LinkList;
 import controller.SystemData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import utils.Utilities;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -14,13 +16,18 @@ public class IngredientViewer {
     @FXML
     TextField name;
     @FXML
+    ListView<String> ingredientListView;
+    @FXML
     TextArea description;
     @FXML
     Slider abv;
     @FXML
-    Label infoText;
+    Label infoText, modeText, abvText;
     @FXML
     Button submit, edit, delete, home;
+
+    LinkList<Ingredient> ingredientList;
+    public static IngredientViewer IVController;
 
 
     // control variables. do not touch pls <333333333
@@ -42,7 +49,7 @@ public class IngredientViewer {
     }
     @FXML
     protected boolean addNewIngredient() {
-        if(name.getValue()==null || description.getValue()==null || !Utilities.isDouble(abv.getText())) return false;
+        if(name.getText()==null || description.getText()==null) return false;
         // return false if values are empty or if IsDouble/IsType checks fail
         SystemData.ingredients.addElement(getFields()); // add item, remember that getFIelds should return relevant type
         showIngredients(); // update list view
@@ -68,7 +75,7 @@ public class IngredientViewer {
         if(selectedIngredient != null){
             System.out.println("now editing "+selectedIndex);
             submit.setText("Submit");
-            ingredientText.setText("Edit Ingredient Info");
+            modeText.setText("Edit Ingredient Info");
             editing = true;
             editingIndex = selectedIndex;
             setFields(selectedIngredient);
@@ -78,7 +85,7 @@ public class IngredientViewer {
     @FXML
     protected void showIngredients() { // updates list
         ingredientListView.getItems().clear();
-        LinkedList<Ingredient>.Node<Ingredient> n = ingredientList.head;
+        LinkList<Ingredient>.Node<Ingredient> n = ingredientList.head;
         while (n!=null){
             ingredientListView.getItems().add(n.getContents().getName() + "     " + n.getContents().getDescription()+"    "+n.getContents().getAbv());
             n = n.next;
@@ -88,19 +95,16 @@ public class IngredientViewer {
     protected void updateView() { // general view update, called on every click.
         selectedIndex = ingredientListView.getSelectionModel().getSelectedIndex();
         System.out.println("selected index: "+selectedIndex);
-        LinkedList<Ingredient>.Node<Ingredient> node = ingredientList.getNode(selectedIndex);
+        LinkList<Ingredient>.Node<Ingredient> node = ingredientList.getNode(selectedIndex);
         if(node!=null) { // disable buttons if no selected item
             selectedIngredient = node.getContents();
-            viewPerfs.setDisable(false);
             edit.setDisable(false);
             delete.setDisable(false);
         }
         else {
-            viewPerfs.setDisable(true);
             edit.setDisable(true);
             delete.setDisable(true);
         }
-        if(!Utilities.isDouble(abv.getText())) abv.setText("");
         // resets textfields if type does not match
     }
     @FXML
@@ -120,24 +124,19 @@ public class IngredientViewer {
     }
     public void initialize() // called on every opening of this scene, as a new controller is created every time a scene is set
     {
-        HelloController = this; // when new controller instance is created, it becomes Controller
+        IVController = this; // when new controller instance is created, it becomes Controller
     }
     protected void setFields(Ingredient ingredientInfo) // fills all the fields with data FROM the currently selected item in the list view
     {
         name.setText(ingredientInfo.getName());
         abv.setValue(ingredientInfo.getAbv());
-        startDate.setValue(LStartDate);
+        abvText.setText(""+abv.getValue());
         description.setText(ingredientInfo.getDescription());
-        endDate.setValue(LEndDate);
     }
     protected Ingredient getFields() // gets the info from the input tab. for fetching input when adding new item
     {
-        //parse int for prices
-        double stalls = Double.parseDouble(stallsPrice.getText());
-        double circle = Double.parseDouble(circlePrice.getText());
-        double balcony = Double.parseDouble(balconyPrice.getText());
         // double parsing to get value from textfield as number. Double check done in add function (at top)
-        return new Ingredient(name.getText(), description.getText() (int)runtime.getValue(), Utilities.dateToString(startDate.getValue()), Utilities.dateToString(endDate.getValue()), stalls, circle, balcony);
+        return new Ingredient(name.getText(), description.getText(), abv.getValue());
     }
     public void openHomeView(ActionEvent actionEvent) throws IOException
     {
