@@ -125,7 +125,7 @@ public class DrinkCreator {
     public void initialize() // called on every opening of this scene, as a new controller is created every time a scene is set
     {
         DCController = this; // when new controller instance is created, it becomes Controller
-
+        drinkList = SystemData.drinks;
     }
     protected void setFields(Drink drinkInfo) // fills all the fields with data FROM the currently selected item in the list view
     {
@@ -138,7 +138,7 @@ public class DrinkCreator {
     {
         //parse int for prices
         // double parsing to get value from textfield as number. Double check done in add function (at top)
-        return new Drink(drinkName.getText(), drinkDescription.getText(), drinkCountry.getText() ,imageURL.getText());
+        return new Drink(drinkName.getText(), drinkDescription.getText(), drinkCountry.getText());
     }
     public void openHomeView(ActionEvent actionEvent) throws IOException
     {

@@ -16,11 +16,10 @@ public class Drink {
     //completed drink (as a URL) are among key data to store
 
 
-    public Drink(String drinkname, String drinkcountry, String drinkdescription, String imageURL) {
+    public Drink(String drinkname, String drinkcountry, String drinkdescription) {
         this.drinkname = drinkname;
         this.drinkcountry = drinkcountry;
         this.drinkdescription = drinkdescription;
-        this.imageURL = imageURL;
     }
 
     public String getDrinkName() {

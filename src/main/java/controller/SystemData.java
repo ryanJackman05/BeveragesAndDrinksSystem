@@ -12,29 +12,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class SystemData {
-    public static LinkList<Drink> drinks;
-    public static LinkList<Ingredient> ingredients;
+    public static LinkList<Drink> drinks = new LinkList<Drink>();
+    public static LinkList<Ingredient> ingredients = new LinkList<Ingredient>();
 
-    @FXML
-    protected void save()
-    {
-        try{
-            fileSave();
-        }
-        catch (Exception e){
-            System.out.println(e);
-        }
-    }
-    @FXML
-    protected void load()
-    {
-        try{
-            fileLoad();
-        }
-        catch (Exception e){
-            System.out.println(e);
-        }
-    }
+
 
     public static void fileSave() throws Exception { // taken from "Technology App" from Programming Fundamentals II
         XStream xstream = new XStream(new DomDriver());
