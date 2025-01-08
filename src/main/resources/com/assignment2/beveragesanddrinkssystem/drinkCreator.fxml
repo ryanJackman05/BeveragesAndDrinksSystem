@@ -21,9 +21,12 @@
                 <Label layoutX="20.0" layoutY="51.0" text="Drink Description" />
                 <TextArea fx:id="drinkDescription" prefHeight="68.0" prefWidth="210.0" wrapText="true" />
             <Label layoutX="20.0" layoutY="137.0" text="Measures" />
-            <ListView fx:id="ingredientListView" prefHeight="102.0" prefWidth="210.0" />
+            <ListView fx:id="ingredientListView" prefHeight="100.0" prefWidth="210.0" />
                 <Button fx:id="submit" mnemonicParsing="false" onAction="#submit" text="Create Drink" />
-            <Label fx:id="infoText" layoutX="20.0" layoutY="137.0" prefHeight="48.0" prefWidth="200.0" text="Drink Description" />
+            <Label fx:id="infoText" alignment="TOP_LEFT" layoutX="20.0" layoutY="137.0" prefHeight="48.0" prefWidth="200.0" text="Drink Description" wrapText="true">
+               <font>
+                  <Font size="10.0" />
+               </font></Label>
             </children>
             <padding>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

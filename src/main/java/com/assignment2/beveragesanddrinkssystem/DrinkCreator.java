@@ -9,9 +9,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import utils.Utilities;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class DrinkCreator {
     public static DrinkCreator DCController;
@@ -24,7 +27,7 @@ public class DrinkCreator {
     @FXML
     TextField drinkCountry;
     @FXML
-    ListView<FXML> ingredientListView;
+    ListView<Pane> ingredientListView;
     @FXML
     ListView<String> drinkListView;
     @FXML
@@ -90,7 +93,8 @@ public class DrinkCreator {
         drinkListView.getItems().clear();
         LinkList<Drink>.Node<Drink> n = drinkList.head;
         while (n!=null){
-            drinkListView.getItems().add(n.getContents().getDrinkName() + "     " + n.getContents().getDrinkDescription()+"    " + n.getContents().getDrinkCountry()+"    " + n.getContents().getImageURL()+"    ");
+            System.out.println("SHowig DRinks");
+            drinkListView.getItems().add(n.getContents().getDrinkName() + "     " + n.getContents().getABV());
             n = n.next;
         }
     }
@@ -114,7 +118,9 @@ public class DrinkCreator {
     @FXML
     protected void resetView() // resets ALL fields, and returns to adding mode
     {
-        System.out.println("Resetting view");
+        System.out.println("Resetting drinks view");
+        ingredientList = SystemData.ingredients;
+        drinkList = SystemData.drinks;
         editing = false;
         editingIndex = -1;
         submit.setText("Create Drink");
@@ -125,37 +131,71 @@ public class DrinkCreator {
         drinkName.setText("");
         drinkCountry.setText("");
         drinkDescription.setText("");
+
+        ingredientListView.getItems().clear();
+        LinkList<Ingredient>.Node<Ingredient> n = ingredientList.head;
+        while (n!=null){
+            RadioButton rb = new RadioButton(n.getContents().getName());
+            TextField tf = new TextField();
+            rb.setPrefWidth(120);
+            tf.setPrefWidth(60);
+            HBox measureBox = new HBox();
+            measureBox.getChildren().add(0,tf);
+            measureBox.getChildren().add(0,rb);
+            ingredientListView.getItems().add(measureBox);
+            n = n.next;
+        }
     }
-    public void initialize() // called on every opening of this scene, as a new controller is created every time a scene is set
+    public void initialize() throws IOException // called on every opening of this scene, as a new controller is created every time a scene is set
     {
         DCController = this; // when new controller instance is created, it becomes Controller
         drinkList = SystemData.drinks;
         ingredientList = SystemData.ingredients;
-        ingredientListView.getItems().clear();
-        LinkList<Ingredient>.Node<Ingredient> n = ingredientList.head;
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("drinksView.fxml"));
-        while (n!=null){
-            ingredientListView.getItems().add(new Pane(fxmlLoader.load()));
-            n = n.next;
-        }
     }
     protected void setFields(Drink drinkInfo) // fills all the fields with data FROM the currently selected item in the list view
     {
         drinkName.setText(drinkInfo.getDrinkName());
         drinkCountry.setText(drinkInfo.getDrinkCountry());
         drinkDescription.setText(drinkInfo.getDrinkDescription());
+
+        LinkList<Measure> drinkMeasures = selectedDrink.getRecipe().getMeasures();
+        for (int i = 0; i < ingredientListView.getItems().size(); i++) {
+            Pane measurePane = ingredientListView.getItems().get(i);
+            RadioButton rb = (RadioButton) measurePane.getChildren().get(0);
+            TextField tf = (TextField) measurePane.getChildren().get(1);
+            rb.setSelected(false);
+            tf.setText("");
+            for (int j = 0; j < drinkMeasures.getLength(); j++) {
+                Measure m = drinkMeasures.getNode(j).getContents();
+                if(Objects.equals(rb.getText(), m.getIngredient().getName())){
+                    rb.setSelected(true);
+                    tf.setText(""+m.getVolume());
+                }
+            }
+        }
     }
     protected Drink getFields() // gets the info from the input tab. for fetching input when adding new item
     {
         //parse int for prices
-        // double parsing to get value from textfield as number. Double check done in add function (at top)
-
         LinkList<Measure> measures = new LinkList<Measure>();
         for (int i = 0; i < ingredientListView.getItems().size(); i++) {
-            System.out.println(ingredientListView.getChildrenUnmodifiable().get(i).getClass());
+            Pane measurePane = ingredientListView.getItems().get(i);
+            RadioButton rb = (RadioButton) measurePane.getChildren().get(0);
+            TextField tf = (TextField) measurePane.getChildren().get(1);
+            if(rb.isSelected()){
+                if(!Utilities.isDouble(tf.getText()) || Objects.equals(tf.getText(), "")){
+                    tf.setText("");
+                    infoText.setText("Error: non-number value assigned to ingredient");
+                }
+                else{
+                    measures.addElement(new Measure(ingredientList.getNode(i).getContents(), Double.parseDouble(tf.getText())));
+                    // double parsing to get value from textfield as number. Double check done in add function (at top)
+                }
+            }
+
         }
 
-        return new Drink(drinkName.getText(), drinkDescription.getText(), drinkCountry.getText());
+        return new Drink(drinkName.getText(), drinkCountry.getText(), drinkDescription.getText(), measures);
     }
     public void openHomeView(ActionEvent actionEvent) throws IOException
     {

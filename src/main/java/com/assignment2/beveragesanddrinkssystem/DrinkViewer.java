@@ -42,7 +42,7 @@ public class DrinkViewer {
             selectedDrink = (Drink) HelloApplication.drinksViewer.getUserData();
             drinkName.setText("Drink Name: "+selectedDrink.getDrinkName());
             drinkDescription.setText(selectedDrink.getDrinkDescription());
-            drinkCountry.setText(selectedDrink.getDrinkCountry());
+            drinkCountry.setText("Country of Origin: "+selectedDrink.getDrinkCountry());
             recipe.setText(selectedDrink.getIngredients());
         }
         else {

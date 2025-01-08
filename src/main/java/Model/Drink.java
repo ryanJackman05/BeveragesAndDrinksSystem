@@ -1,5 +1,7 @@
 package Model;
 
+import controller.LinkList;
+
 import java.util.Objects;
 
 public class Drink {
@@ -16,10 +18,11 @@ public class Drink {
     //completed drink (as a URL) are among key data to store
 
 
-    public Drink(String drinkname, String drinkcountry, String drinkdescription) {
+    public Drink(String drinkname, String drinkcountry, String drinkdescription, LinkList<Measure> measures) {
         this.drinkname = drinkname;
         this.drinkcountry = drinkcountry;
         this.drinkdescription = drinkdescription;
+        this.recipe = new Recipe(measures);
     }
     public void addRecipe(Recipe recipe)
     {
@@ -67,6 +70,12 @@ public class Drink {
         }
         return output;
     }
+
+    public Recipe getRecipe()
+    {
+        return recipe;
+    }
+
     public double getABV()
     {
         double totalVolume = 0, totalAlcVolume = 0;
@@ -77,7 +86,7 @@ public class Drink {
             totalVolume += volume;
             totalAlcVolume += volume * ABV;
         }
-        return totalVolume / totalAlcVolume;
+        return totalAlcVolume / totalVolume;
     }
 
     @Override

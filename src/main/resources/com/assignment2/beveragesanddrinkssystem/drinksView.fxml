@@ -3,19 +3,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment2.beveragesanddrinkssystem.DrinkViewer">
 
     <Pane prefHeight="400.0" prefWidth="600.0">
         <children>
             <Label fx:id="drinkName" layoutX="19.0" layoutY="18.0" prefHeight="37.0" prefWidth="149.0" text="Drink Name" />
-            <ImageView fitHeight="254.0" fitWidth="194.0" layoutX="392.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../../../../../../cocktail.jpg" />
-            </image></ImageView>
-            <Label fx:id="drinkCountry" layoutX="19.0" layoutY="55.0" prefHeight="37.0" prefWidth="149.0" text="Drink ABV" />
-         <Label fx:id="drinkDescription" alignment="TOP_LEFT" layoutX="19.0" layoutY="156.0" prefHeight="226.0" prefWidth="250.0" text="Description" />
-         <Button fx:id="home" layoutX="497.0" layoutY="361.0" mnemonicParsing="false" text="Home" />
-         <Label fx:id="recipe" alignment="TOP_LEFT" layoutX="291.0" layoutY="200.0" prefHeight="153.0" prefWidth="295.0" text="Ingredients" />
-        </children></Pane>
+            <Label fx:id="drinkCountry" layoutX="19.0" layoutY="55.0" prefHeight="37.0" prefWidth="149.0" text="Drink Country" />
+            <Label fx:id="drinkDescription" alignment="TOP_LEFT" layoutX="19.0" layoutY="156.0" prefHeight="226.0" prefWidth="194.0" text="Description" wrapText="true" />
+            <Button fx:id="home" layoutX="497.0" layoutY="361.0" mnemonicParsing="false" text="Home" />
+            <Label fx:id="recipe" alignment="TOP_LEFT" layoutX="234.0" layoutY="163.0" prefHeight="190.0" prefWidth="352.0" text="Ingredients" wrapText="true" />
+            <Line endX="220.0" endY="400.0" startX="220.0" />
+        </children>
+    </Pane>
 </AnchorPane>

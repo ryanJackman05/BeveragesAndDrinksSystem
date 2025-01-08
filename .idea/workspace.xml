@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c4d1065-c395-49b6-8081-1600994a5325" name="Changes" comment="save works">
+    <list default="true" id="6c4d1065-c395-49b6-8081-1600994a5325" name="Changes" comment="files added to branch">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/saveFile.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Drink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Drink.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Measure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Measure.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Recipe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/assignment2/beveragesanddrinkssystem/DrinkCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/assignment2/beveragesanddrinkssystem/DrinkCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/assignment2/beveragesanddrinkssystem/DrinkViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/assignment2/beveragesanddrinkssystem/DrinkViewer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/assignment2/beveragesanddrinkssystem/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/assignment2/beveragesanddrinkssystem/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/assignment2/beveragesanddrinkssystem/IngredientViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/assignment2/beveragesanddrinkssystem/IngredientViewer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/assignment2/beveragesanddrinkssystem/drinkCreator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/assignment2/beveragesanddrinkssystem/drinkCreator.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/assignment2/beveragesanddrinkssystem/drinksView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/assignment2/beveragesanddrinkssystem/drinksView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/assignment2/beveragesanddrinkssystem/ingsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/assignment2/beveragesanddrinkssystem/ingsView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/assignment2/beveragesanddrinkssystem/measure.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/assignment2/beveragesanddrinkssystem/measure.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,6 +105,7 @@
       <updated>1734569522721</updated>
       <workItem from="1734569523729" duration="399000" />
       <workItem from="1736167833970" duration="6075000" />
+      <workItem from="1736264619125" duration="10855000" />
     </task>
     <task id="LOCAL-00001" summary="Setup; LinkList still to be implemented">
       <option name="closed" value="true" />
@@ -162,7 +163,23 @@
       <option name="project" value="LOCAL" />
       <updated>1736184375748</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="basic functionality complete, attempting to display measures in DrinkCreator">
+      <option name="closed" value="true" />
+      <created>1736188963417</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1736188963418</updated>
+    </task>
+    <task id="LOCAL-00009" summary="files added to branch">
+      <option name="closed" value="true" />
+      <created>1736188996032</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1736188996032</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,6 +204,8 @@
     <MESSAGE value="save" />
     <MESSAGE value="stable build, opens and doesn't crash :)" />
     <MESSAGE value="save works" />
-    <option name="LAST_COMMIT_MESSAGE" value="save works" />
+    <MESSAGE value="basic functionality complete, attempting to display measures in DrinkCreator" />
+    <MESSAGE value="files added to branch" />
+    <option name="LAST_COMMIT_MESSAGE" value="files added to branch" />
   </component>
 </project>

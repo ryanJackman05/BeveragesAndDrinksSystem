@@ -1,29 +1,42 @@
 <object-stream>
   <controller.LinkList>
     <head>
-      <next>
-        <next>
-          <contents class="Model.Drink">
-            <drinkname>cfvgbhjnmk,l</drinkname>
-            <drinkcountry>fgh jnmkl</drinkcountry>
-            <drinkdescription>cfvgbhjnmk,l</drinkdescription>
-            <imageURL></imageURL>
-          </contents>
-        </next>
-        <contents class="Model.Drink">
-          <drinkname>cfvgbhjnmk,l</drinkname>
-          <drinkcountry>fgh jnmkl</drinkcountry>
-          <drinkdescription>cfvgbhjnmk,l</drinkdescription>
-          <imageURL></imageURL>
-        </contents>
-      </next>
       <contents class="Model.Drink">
-        <drinkname>cfvgbhjnmk,l</drinkname>
-        <drinkcountry>fgh jnmkl</drinkcountry>
-        <drinkdescription>cfvgbhjnmk,l</drinkdescription>
+        <drinkname>Vodka Shot</drinkname>
+        <drinkcountry>None</drinkcountry>
+        <drinkdescription>A simple single shot of a strong spirit</drinkdescription>
         <imageURL></imageURL>
+        <recipe>
+          <measures>
+            <head>
+              <contents class="Model.Measure">
+                <ingredient>
+                  <name>Vodka</name>
+                  <description>A eastern European spirit used in many cocktails.</description>
+                  <abv>20.0</abv>
+                </ingredient>
+                <volume>20.0</volume>
+              </contents>
+            </head>
+          </measures>
+        </recipe>
       </contents>
     </head>
   </controller.LinkList>
-  <controller.LinkList/>
+  <controller.LinkList>
+    <head>
+      <next>
+        <contents class="Model.Ingredient">
+          <name>Vodka</name>
+          <description>A eastern European spirit used in many cocktails.</description>
+          <abv>20.0</abv>
+        </contents>
+      </next>
+      <contents class="Model.Ingredient">
+        <name>Advocaat</name>
+        <description>A creamy egg-based liquer.</description>
+        <abv>18.0</abv>
+      </contents>
+    </head>
+  </controller.LinkList>
 </object-stream>

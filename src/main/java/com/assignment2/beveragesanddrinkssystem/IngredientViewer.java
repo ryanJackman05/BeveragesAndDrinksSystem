@@ -53,6 +53,7 @@ public class IngredientViewer {
         // return false if values are empty or if IsDouble/IsType checks fail
         SystemData.ingredients.addElement(getFields()); // add item, remember that getFIelds should return relevant type
         showIngredients(); // update list view
+        System.out.println(SystemData.ingredients.getLength());
         return true;
     }
     @FXML
@@ -111,6 +112,7 @@ public class IngredientViewer {
     protected void resetView() // resets ALL fields, and returns to adding mode
     {
         System.out.println("Resetting view");
+        ingredientList = SystemData.ingredients;
         editing = false;
         editingIndex = -1;
         submit.setText("Create Ingredient");
